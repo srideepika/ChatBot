@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.alicebot.ab.Bot;
@@ -16,13 +19,16 @@ public class MainActivity extends Activity {
     
     private static final String TAG = "MainActivity";
     
-    String botname = "alice2";
+    String botname = "alice2",request;
+    EditText et;
+    Button bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        et=(EditText)findViewById(R.id.user);
+        bt=(Button)findViewById(R.id.bt);
         File fileExt = new File(getExternalFilesDir(null).getAbsolutePath() + "/bots");
         if (!fileExt.exists()) {
             ZipFileExtraction extract = new ZipFileExtraction();
@@ -35,34 +41,21 @@ public class MainActivity extends Activity {
             }
         }
 
-        new AsyncTask<Void, Void, String>() {
+        bt.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected String doInBackground(Void... params) {
-                final String path = getExternalFilesDir(null).getAbsolutePath();
-
-                Bot bot = new Bot(botname, path);
-                Chat chatSession = new Chat(bot);
-                String request = "Hello.";
-                //String request = "What is your name?";
-                String response = chatSession.multisentenceRespond(request);
-
-                Log.v(TAG, "response = " + response);
-                return response;
-            }
-
-            @Override
-            protected void onPostExecute(String response) {
-                if (response.isEmpty()) {
-                    response = "There is no response";
-                }
-                ((TextView) findViewById(R.id.title_text))
-                        .setText(response);
+            public void onClick(View v) {
+                request=et.getText().toString();
+                new ask().execute();
 
             }
-        }.execute();
+        });
+
+
         
         
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -124,5 +117,30 @@ public class MainActivity extends Activity {
         }
 */
 
+    public class ask extends AsyncTask<Void, Void, String> {
+        @Override
+        protected String doInBackground(Void... params) {
+            final String path = getExternalFilesDir(null).getAbsolutePath();
+
+            Bot bot = new Bot(botname, path);
+            Chat chatSession = new Chat(bot);
+
+            //String request = "What is your name?";
+            String response = chatSession.multisentenceRespond(request);
+
+            Log.v(TAG, "response = " + response);
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            if (response.isEmpty()) {
+                response = "There is no response";
+            }
+            ((TextView) findViewById(R.id.title_text))
+                    .setText(response);
+
+        }
+    }
 
     }
