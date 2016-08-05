@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+   <category>
+      <pattern>I am *</pattern>
+      <template>
+         Hello <set name="uname"> <star/> </set>!
+      </template>  
+   </category>  
+   <category>
+      <pattern>Bye</pattern>
+      <template>
+         Bye <get name="uname"/> Thanks for the conversation!
+      </template>  
+   </category>  
+</aiml>

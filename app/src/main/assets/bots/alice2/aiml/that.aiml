@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+   <category>
+      <pattern>WHAT IS INTERRUPT</pattern>
+      <template><set name="topic">interrupt</set> IS A COMPUTER SCIENCE NATIONAL TECHNICAL SYMPOSIUM ORGANIZED BY SRI VENKATESWARA COLLEGE OF ENGINEERING WOULD YOU LIKE TO KNOW WHEN IT IS</template>  
+   </category>
+   <topic name="interrupt">
+   <category>
+      <pattern>YES</pattern>
+      <template>Its on the 1st of October 2016. Find out where you have to be.</template>
+   </category>
+   </topic>
+   <category>
+      <pattern>WHEN IS IT</pattern>
+      <!--that>WHAT IS INTERRUPT</that-->
+      <template>Its on the 1st of October 2016. Find out where you have to be.</template>
+   </category>   
+      <category>
+      <pattern>WHERE IS IT</pattern>
+      <!--that>WHAT IS INTERRUPT</that-->
+      <template>Since it is hosted by Sri Venkateswara College of Engineering(SVCE), the venue will be at SVCE campus,link to the address is given here map link</template>
+   </category>
+   <category>
+     <pattern>WHERE SHOULD I BE</pattern>
+      <!--that>WHEN IS IT</that-->
+      <template>Since it is hosted by Sri Venkateswara College of Engineering(SVCE), the venue will be at SVCE campus,link to the address is given here map link</template>
+   </category>  
+   <category>
+   <pattern>WHO IS ORGANISING IT</pattern>
+      <template>SVCE.</template>
+   </category>
+   <category>      
+   <pattern>WHAT ARE THE EVENTS</pattern>
+      <template>We have some very interesting events lined up for you. Here is the list of technical events....Here is the list of non-technical events.....Dont forget to register to the hackathon which will be held on site, details and link : ....Also, be sure to checkout the workshops... Want to know timings?</template>
+   </category> 
+   <category>
+      <pattern>What are the timings</pattern>
+      <!--that>WHAT ARE THE EVENTS</that-->
+      <template>Technical/Non technical?</template>
+   </category>
+   <category>
+      <pattern>TECHNICAL</pattern>
+      <!--that>What are the timings</that-->
+      <template>Timing details:(technical)</template>
+   </category>
+    <category>
+      <pattern>NON TECHNICAL</pattern>
+      <!--that>What are the timings</that-->
+      <template>Timing details:(non technical)</template>
+   </category>
+   <category>
+      <pattern>* registration fee</pattern>
+      <template>It is completely free.</template>
+   </category>
+    <category>
+      <pattern>* DRESS CODE</pattern>
+      <template>Boys: Girls:.</template>
+   </category>
+      <category>
+      <pattern>* PRIZES</pattern>
+      <template>Prizes:.</template>
+   </category>
+    
+     <category>
+      <pattern>CONTEXT OK</pattern>
+      <that>CONTEXT</that>
+      <template>Success</template>
+   </category>
+        
+</aiml>
