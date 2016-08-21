@@ -9,7 +9,7 @@
    <category>
       <pattern>Bye</pattern>
       <template>
-         Bye <get name="uname"/> Thanks for the conversation!
+         Bye <bot name="uname"/> Thanks for the conversation!
       </template>  
    </category>  
 </aiml>

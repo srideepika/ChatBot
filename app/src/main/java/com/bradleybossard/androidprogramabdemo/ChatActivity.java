@@ -32,7 +32,7 @@ public class ChatActivity extends ActionBarActivity {
     private ArrayList<ChatMessage> chatHistory;
     private static final String TAG = "MainActivity";
 
-    String botname = "alice2",request;
+    String botname = "super",request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
